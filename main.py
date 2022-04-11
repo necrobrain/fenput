@@ -1,4 +1,5 @@
 import string
+import commands
 
 def maybe_int(input): #if input is int > output = int, otherwise unchanged
     
@@ -15,7 +16,7 @@ def create_variables(): # fills a dictionary with letters A-Z as keys, 0 as init
 
 def parse_file(program): # runs through the written program line by line
     
-    variables = create_variables # creating the initial dictionary for the variables and their values
+    variables = create_variables() # creating the initial dictionary for the variables and their values
     i = 0
     output = []
     while i < len(program):
@@ -27,12 +28,15 @@ def parse_file(program): # runs through the written program line by line
         
         if commandtype == "PRINT":
             variable = maybe_int(command[1])
-            print_output = variables[variable]
-            output.append[variable]
+            commands.print_value(variables, variable, output)
+            # print_output = variables[variable]
+            # output.append[variable]
         
-        if commandtype == "MOV":
+        # if commandtype == "MOV":
         
         i += 1
+    
+    print(output)
 
 
 def run(program):
