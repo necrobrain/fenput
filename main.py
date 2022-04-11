@@ -1,34 +1,37 @@
 import string
 
-def maybe_int(input):
+def maybe_int(input): #if input is int > output = int, otherwise unchanged
     
     try:
         return int(input)
     except:
         return input
 
-def create_variables():
+def create_variables(): # fills a dictionary with letters A-Z as keys, 0 as init value
     
    variables = {}
    for letter in string.ascii_uppercase:
        variables[letter] = 0
 
 
-def parse_file(program):
+def parse_file(program): # runs through the written program line by line
     
-    variables = create_variables
+    variables = create_variables # creating the initial dictionary for the variables and their values
     i = 0
     output = []
     while i < len(program):
         line = program[i]
         print(line)
-        command = line.split(' ')
-        commandtype = command[0]
+        command = line.split(' ') # splits each line of the program into an item in a list for indexing
+        commandtype = command[0] # command type, e.g. PRINT, should always be found on  the first index
+        # note: add error handling
         
         if commandtype == "PRINT":
-            variable = int(command[1])
+            variable = maybe_int(command[1])
             print_output = variables[variable]
             output.append[variable]
+        i += 1
+
 
 
 def run(program):
