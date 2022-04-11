@@ -13,7 +13,6 @@ def create_variables(): # fills a dictionary with letters A-Z as keys, 0 as init
    for letter in string.ascii_uppercase:
        variables[letter] = 0
 
-
 def parse_file(program): # runs through the written program line by line
     
     variables = create_variables # creating the initial dictionary for the variables and their values
@@ -30,8 +29,10 @@ def parse_file(program): # runs through the written program line by line
             variable = maybe_int(command[1])
             print_output = variables[variable]
             output.append[variable]
+        
+        if commandtype == "MOV":
+        
         i += 1
-
 
 
 def run(program):
