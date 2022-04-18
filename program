@@ -1,0 +1,7 @@
+MOV A 1
+MOV B 20
+jump_point:
+PRINT A
+MUL A 2
+IF A < B JUMP jump_point
+EXIT
