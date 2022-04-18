@@ -1,13 +1,19 @@
 from string import ascii_uppercase
 
-
 def maybe_int(s):
-
     try:
         return int(s)
     except:
         return s
 
+def read_file(filename: str):
+    program = []
+    with open(filename) as program_text:
+        for line in program_text:
+            line = line.replace('\n', '')
+            print(line)
+            program.append(line)
+    return program
 
 def populate_variables():
     keys = ascii_uppercase
@@ -36,10 +42,12 @@ def run(program: list):
     jump_location_indexes = find_jump_locations(program)
     output = []
     i = 0
+
     while i < len(program):
         line = program[i]
         command = line.split(' ')
         commandtype = command[0]
+
         if commandtype == "MOV":  # Assigns value of int(X) to the variable
             target = command[1]
             value = maybe_int(command[2])
@@ -125,18 +133,10 @@ def run(program: list):
 
 def main():
 
-    while True:
-        program = []
-        command_input = input(
-            "Type in a command (strict syntax)\nRead README.md for a list of commands and syntax\n  * Type EXIT to exit CLI.\n  * Type RUN to run program\nEnter: ")
-        if command_input == "EXIT":
-            print("Goodbye!")
-            break
-        elif command_input == "RUN":
-            run(program)
-        else:
-            program.append(command_input)
-
+    program_name = input("Write the name of the file with your program")
+    program = read_file(program_name)
+    program_print = run(program)
+    print(program_print)
 
 if __name__ == "__main__":
     
