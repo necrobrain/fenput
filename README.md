@@ -1,6 +1,6 @@
 # Fenput
 
-A <i>very</i> rudimentary progrmaming language
+A <i>very</i> rudimentary programming language
 
 ## Plan
 
