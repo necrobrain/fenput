@@ -1,19 +1,13 @@
 from string import ascii_uppercase
 
+
 def maybe_int(s):
+
     try:
         return int(s)
     except:
         return s
 
-def read_file(filename: str):
-    program = []
-    with open(filename) as program_text:
-        for line in program_text:
-            line = line.replace('\n', '')
-            print(line)
-            program.append(line)
-    return program
 
 def populate_variables():
     keys = ascii_uppercase
@@ -37,17 +31,15 @@ def find_jump_locations(program: list):
     return jumps
 
 
-def run(program: list):
+def run(program):
     variables = populate_variables()
     jump_location_indexes = find_jump_locations(program)
     output = []
     i = 0
-
     while i < len(program):
         line = program[i]
         command = line.split(' ')
         commandtype = command[0]
-
         if commandtype == "MOV":  # Assigns value of int(X) to the variable
             target = command[1]
             value = maybe_int(command[2])
@@ -128,16 +120,14 @@ def run(program: list):
 
         i += 1
 
+    print(output)
+    print(variables)
     return output
 
 
-def main():
-
-    program_name = input("Write the name of the file with your program")
-    program = read_file(program_name)
-    program_print = run(program)
-    print(program_print)
-
 if __name__ == "__main__":
-    
-    main()
+
+    program2 = ['MOV N 100', 'PRINT 2', 'MOV A 3', 'start:', 'MOV B 2', 'MOV Z 0', 'test:', 'MOV C B', 'new:', 'IF C == A JUMP virhe', 'IF C > A JUMP pass_by', 'ADD C B', 'JUMP new',
+                'virhe:', 'MOV Z 1', 'JUMP pass_by2', 'pass_by:', 'ADD B 1', 'IF B < A JUMP test', 'pass_by2:', 'IF Z == 1 JUMP pass_by3', 'PRINT A', 'pass_by3:', 'ADD A 1', 'IF A <= N JUMP start']
+    program2.append("END")
+    result = run(program2)
